@@ -1,0 +1,18 @@
+.blocks {
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 38px;
+  border: 1px solid black;
+}
+
+#container {
+  border: 1px solid black;
+  margin: 100px auto;
+  width: 600px;
+  height: 600px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
