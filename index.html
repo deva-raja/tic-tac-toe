@@ -5,39 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tic-Tac-Toe</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap" rel="stylesheet" />
   </head>
   <body>
-
-    <div id="select-wrapper">
-        <div>
-      <label for="pvp">Person V Person</label>
-      <input type="radio" id="pvp" name="select" value="pvp" />
+    <!-- when game begins -->
+    <div id="gameContainer">
+      <div class="player1" id="container-wrapper">
+        <div id="p1div"></div>
+        <div id="container"></div>
+        <div id="p2div"></div>
       </div>
-      <div>
-      <label for="pvc">Person V Computer</label>
-      <input type="radio" id="pvc" name="select" value="pvc" />
-      </div>
-      <div>
-      <label for="cvc">Computer V Computer</label>
-      <input type="radio" id="cvc" name="select" value="cvc" />
-      </div>    
+      <div id="result"></div>
     </div>
+    <!-- game ends -->
 
-    <div class="player1" id="container-wrapper">
-      <span id="p1span"></span>
-      <div id="container"></div>
-      <span id="p2span"></span>
+    <!-- landing page start -->
+    <div id="landingPage">
+      <div id="heading">Tic-Tac-Toe</div>
+      <div id="pvp">
+        <input type="radio" id="pvpradio" name="select" value="pvp" />
+        <label for="pvpradio">Player Vs Player</label>
+      </div>
+      <div id="pva">
+        <input type="radio" id="pvaradio" name="select" value="pvc" checked/>
+        <label for="pvaradio">Player Vs Cpu</label>
+      </div>
+      <div id="ava">
+        <input type="radio" id="avaradio" name="select" value="cvc" />
+        <label for="avaradio">Cpu Vs Cpu</label>
+      </div>
+
+      <div id="p1Name">
+        <label for="p1name-select">Enter player 1 name</label>
+        <input id="p1name-select" type="text"  placeholder="Player 1" />
+      </div>
+      <div id="p2Name">
+        <label for="p2name-select">Enter player 2 name</label>
+        <input id="p2name-select" type="text"  placeholder="Player 2"/>
+      </div>
+
+      <div id="start-container">
+        <button id="start">Start Game</button>
+      </div>
     </div>
-    <div id="result"></div>
-    <div id="label-wrapper">
-      <label for="p1name">
-        <input type="text" id="p1name" />
-      </label>
-      <label for="p2name">
-        <input type="text" id="p2name" />
-      </label>
-    </div>
-    <button id="start">Start Game</button>
+    <!-- landing page end -->
     <script src="script.js"></script>
   </body>
 </html>

@@ -3,6 +3,13 @@
   margin: 0;
   box-sizing: border-box;
 }
+body {
+  background-color: rgb(236, 241, 235);
+  font-family: 'Cedarville Cursive', cursive;
+  font-size: 38px;
+}
+
+/* actual game board start */
 
 .blocks {
   border: 1px solid black;
@@ -23,48 +30,63 @@
   grid-template-rows: repeat(3, 1fr);
 }
 
-#container-wrapper {
+#gameContainer {
+  width: 1850px;
+  margin: 0 auto;
   display: none;
+  position: absolute;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+#container-wrapper {
+  width: 1200px;
+  display: flex;
   align-items: center;
 }
 
-#pvp {
-  padding: 20px;
-  margin: 400px 800px;
-  width: 200px;
-  position: absolute;
-}
+/* actual game board end */
 
-input {
-  border: 1px solid black;
-  margin-left: 50px;
-}
-#label-wrapper {
-  display: flex;
-  margin: 500px 720px;
-  position: absolute;
-}
-#start {
-  padding: 20px;
-  margin: 600px 800px;
-  width: 200px;
-  position: absolute;
-}
-#p1span{
-  position: absolute;
-  left: 200px;
-}
-#p2span{
-  position: absolute;
-  right: 200px;
-}
-#result{
-  text-align: center;
-}
-#select-wrapper{
-  position: absolute;
-  display: flex;
-  /* width: 900px; */
-  height: 400px;
+/* landing page start  */
+#landingPage {
+  background:#6acba3;
   margin: 0 auto;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(4, 1fr);
 }
+#heading {
+  font-size: 48px;
+  grid-row: 1;
+  grid-column: 3;
+  border-bottom: 3px solid black;
+}
+#pvp {
+  grid-row: 2;
+  grid-column: 2;
+}
+#pva {
+  grid-row: 2;
+  grid-column: 3;
+}
+#ava {
+  grid-row: 2;
+  grid-column: 4;
+}
+#p1Name {
+  grid-row: 3;
+  grid-column: 2;
+}
+#p2Name {
+  grid-row: 3;
+  grid-column: 4;
+}
+#start-container {
+  grid-row: 4;
+  grid-column: 3;
+}
+/* landing page end */

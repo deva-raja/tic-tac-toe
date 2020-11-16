@@ -10,7 +10,7 @@ let gameboard = (function () {
       })
       .join("");
   }
-  return { display, arrayMoves };
+  return { display, arrayMoves,container };
 })();
 gameboard.display();
 
@@ -74,18 +74,30 @@ function player(name) {
   return { name };
 }
 
-function showBoard() {
-  let boardContainer = document.querySelector("#container-wrapper");
-  boardContainer.style.display = "flex";
-  startButton.style.display = "none";
-  labelWrapper.style.display = "none";
-  p1span.textContent = "player1 ";
-  p2span.textContent = "player2 ";
+function playerVsCpu(){
+let temp =  gameboard.arrayMoves;
+if(gameboard.arrayMoves!==temp){
+
 }
+}
+
+
+function showBoard() {
+  let options = document.querySelector('input[name="select"]:checked').value;
+
+  let gameContainer = document.querySelector("#gameContainer");
+  gameContainer.style.display = "flex";
+  landingPage.style.display = "none";
+  p1div.textContent = player1Name.value||"Player 1";
+  p2div.textContent = player2Name.value||"Player 2";
+  if(options === "pvc") return playerVsCpu();
+}
+let p1div = document.querySelector("#p1div");
+let p2div = document.querySelector("#p2div");
+let player1Name = document.querySelector("#p1name-select");
+let player2Name = document.querySelector("#p2name-select");
 
 let startButton = document.querySelector("#start");
 startButton.addEventListener("click", showBoard);
 
-let p1span = document.querySelector("#p1span");
-let p2span = document.querySelector("#p2span");
-let labelWrapper = document.querySelector("#label-wrapper");
+let landingPage = document.querySelector("#landingPage");
