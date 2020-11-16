@@ -27,7 +27,8 @@ let gameTickLogic = (function () {
       gameboard.arrayMoves.splice(index, 1, symbolName);
       gameboard.display();
       let gameResult = gameWinLogic.win();
-      result.textContent = gameResult;
+      if (gameResult === "draw") return (result.textContent = "It is a draw");
+      result.textContent = `${gameResult[0] === "x" ? "player 1 " : "player 2 "}wins the game`;
     }
 
     if (this.parentNode.matches(".player1")) {
@@ -55,14 +56,14 @@ let gameWinLogic = (function () {
       if (gameboard.arrayMoves[i] === "" || gameboard.arrayMoves[j] === "" || gameboard.arrayMoves[k] === "") return;
       if (gameboard.arrayMoves[i] === gameboard.arrayMoves[j] && gameboard.arrayMoves[j] === gameboard.arrayMoves[k]) return "win";
     }
-    if (winTester(0, 1, 2) === "win") return "win";
-    if (winTester(3, 4, 5) === "win") return "win";
-    if (winTester(6, 7, 8) === "win") return "win";
-    if (winTester(0, 3, 6) === "win") return "win";
-    if (winTester(1, 4, 7) === "win") return "win";
-    if (winTester(2, 5, 8) === "win") return "win";
-    if (winTester(0, 4, 8) === "win") return "win";
-    if (winTester(2, 4, 6) === "win") return "win";
+    if (winTester(0, 1, 2) === "win") return [gameboard.arrayMoves[0], "win"];
+    if (winTester(3, 4, 5) === "win") return [gameboard.arrayMoves[3], "win"];
+    if (winTester(6, 7, 8) === "win") return [gameboard.arrayMoves[6], "win"];
+    if (winTester(0, 3, 6) === "win") return [gameboard.arrayMoves[0], "win"];
+    if (winTester(1, 4, 7) === "win") return [gameboard.arrayMoves[1], "win"];
+    if (winTester(2, 5, 8) === "win") return [gameboard.arrayMoves[2], "win"];
+    if (winTester(0, 4, 8) === "win") return [gameboard.arrayMoves[0], "win"];
+    if (winTester(2, 4, 6) === "win") return [gameboard.arrayMoves[2], "win"];
     if (!gameboard.arrayMoves.some((x) => x === "")) return "draw";
   }
   return { win };
@@ -73,3 +74,18 @@ function player(name) {
   return { name };
 }
 
+function showBoard() {
+  let boardContainer = document.querySelector("#container-wrapper");
+  boardContainer.style.display = "flex";
+  startButton.style.display = "none";
+  labelWrapper.style.display = "none";
+  p1span.textContent = "player1 ";
+  p2span.textContent = "player2 ";
+}
+
+let startButton = document.querySelector("#start");
+startButton.addEventListener("click", showBoard);
+
+let p1span = document.querySelector("#p1span");
+let p2span = document.querySelector("#p2span");
+let labelWrapper = document.querySelector("#label-wrapper");

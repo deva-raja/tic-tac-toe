@@ -1,17 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tic-Tac-Toe</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="player1" id="contianer-wrapper">
-    <div id="container"></div>
-    <div id="result"></div>
-    </div>  
-   <script src="script.js"></script> 
-</body>
-</html>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
 
+    <div id="select-wrapper">
+        <div>
+      <label for="pvp">Person V Person</label>
+      <input type="radio" id="pvp" name="select" value="pvp" />
+      </div>
+      <div>
+      <label for="pvc">Person V Computer</label>
+      <input type="radio" id="pvc" name="select" value="pvc" />
+      </div>
+      <div>
+      <label for="cvc">Computer V Computer</label>
+      <input type="radio" id="cvc" name="select" value="cvc" />
+      </div>    
+    </div>
+
+    <div class="player1" id="container-wrapper">
+      <span id="p1span"></span>
+      <div id="container"></div>
+      <span id="p2span"></span>
+    </div>
+    <div id="result"></div>
+    <div id="label-wrapper">
+      <label for="p1name">
+        <input type="text" id="p1name" />
+      </label>
+      <label for="p2name">
+        <input type="text" id="p2name" />
+      </label>
+    </div>
+    <button id="start">Start Game</button>
+    <script src="script.js"></script>
+  </body>
+</html>
