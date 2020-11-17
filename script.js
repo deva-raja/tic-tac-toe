@@ -22,6 +22,15 @@ let gameTickLogic = (function () {
     if (el.matches(".clicked")) return;
     let index = el.dataset.index;
 
+    function cpuPlay() {
+      let possibleMoves = gameboard.arrayMoves.filter((item, i) => {
+        if (item === "") {
+          return i;
+        }
+      });
+      console.log(possibleMoves);
+      return;
+    }
     function subToggle(symbol) {
       symbolName = symbol;
       gameboard.arrayMoves.splice(index, 1, symbolName);
@@ -30,25 +39,11 @@ let gameTickLogic = (function () {
       if (gameResult === undefined) return;
       if (gameResult === "draw") return (result.textContent = "It is a draw");
       result.textContent = `${gameResult[0] === "x" ? "player 1 " : "player 2 "}wins the game`;
-    }
-    function randomIndex() {
-      return Math.floor(Math.random() * 8);
-    }
-
-    function playerVsCpu(symbol) {
-      symbolName = symbol;
-      let random = randomIndex();
-      while (gameboard.arrayMoves[random] !== "x") {
-        random = randomIndex();
-      }
-      gameboard.arrayMoves.splice(random, 1, symbolName);
-      gameboard.display();
-      let gameResult = gameWinLogic.win();
-      if (gameResult === "draw") return (result.textContent = "It is a draw");
-      result.textContent = `${gameResult[0] === "x" ? "player 1 " : "player 2 "}wins the game`;
+      if (options === "pvc") return cpuPlay();
     }
 
     if (this.parentNode.matches(".player1")) {
+      if (options === "pvc") return subToggle("x");
       this.parentNode.classList.toggle("player1");
       return subToggle("x");
     }
