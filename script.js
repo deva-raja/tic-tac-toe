@@ -14,6 +14,27 @@ let gameboard = (function () {
 })();
 gameboard.display();
 
+function cpuPlay(symbol = "0") {
+  // let gameResult = gameWinLogic.win();
+  // if (gameResult === "win" || gameResult === "draw") return;
+  let pam = [];
+  for (let i = 0; gameboard.arrayMoves.length > i; i++) {
+    if (gameboard.arrayMoves[i] === "") pam.push(i);
+  }
+  let random = Math.floor(Math.random() * pam.length);
+  let randomChoice = pam[random];
+  gameboard.arrayMoves.splice(randomChoice, 1, symbol);
+  gameboard.display();
+  working();
+}
+
+function working() {
+  let gameResult = gameWinLogic.win();
+  if (gameResult === undefined) return;
+  if (gameResult === "draw") return (result.textContent = "It is a draw");
+  result.textContent = `${gameResult[0] === "x" ? "player 1 " : "player 2 "}wins the game`;
+}
+
 // gameTickLogic module for x and 0's
 let gameTickLogic = (function () {
   function playerMove(e) {
@@ -22,27 +43,12 @@ let gameTickLogic = (function () {
     if (el.matches(".clicked")) return;
     let index = el.dataset.index;
 
-    function cpuPlay() {
-      let pam = [];
-      for (let i = 0; gameboard.arrayMoves.length > i; i++) {
-        if (gameboard.arrayMoves[i] === "") pam.push(i);
-      }
-      let random = Math.floor(Math.random() * pam.length);
-      let randomChoice = pam[random];
-      console.log(randomChoice);
-      gameboard.arrayMoves.splice(randomChoice, 1, "0");
-      return gameboard.display();
-    }
-
     function subToggle(symbol) {
       symbolName = symbol;
       gameboard.arrayMoves.splice(index, 1, symbolName);
       gameboard.display();
       if (options === "pvc") cpuPlay();
-      let gameResult = gameWinLogic.win();
-      if (gameResult === undefined) return;
-      if (gameResult === "draw") return (result.textContent = "It is a draw");
-      result.textContent = `${gameResult[0] === "x" ? "player 1 " : "player 2 "}wins the game`;
+      working();
     }
 
     if (this.parentNode.matches(".player1")) {
@@ -60,6 +66,7 @@ let gameTickLogic = (function () {
     let boards = document.querySelector("#container");
     boards.addEventListener("click", playerMove);
   }
+
   return { tick };
 })();
 gameTickLogic.tick();
@@ -104,6 +111,21 @@ function showBoard() {
   p1div.textContent = player1Name.value || "Player 1";
   p2div.textContent = player2Name.value || "Player 2";
   options = optionsValue;
+  if (options === "cvc") {
+    setInterval(aiPlay, 1000);
+  }
+}
+
+function aiPlay() {
+  let finished = false;
+  if (finished === true) return;
+  if (gameboard.arrayMoves.every((item) => item !== "")) return;
+  let gameResult = gameWinLogic.win();
+  if (gameResult !== undefined) {
+    if (gameResult[1] === "win" || gameResult[1] === "draw") return (finished = true);
+  }
+  cpuPlay("x");
+  cpuPlay("0");
 }
 
 let startButton = document.querySelector("#start");
