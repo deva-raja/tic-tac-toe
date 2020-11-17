@@ -10,7 +10,7 @@ let gameboard = (function () {
       })
       .join("");
   }
-  return { display, arrayMoves,container };
+  return { display, arrayMoves, container };
 })();
 gameboard.display();
 
@@ -25,6 +25,23 @@ let gameTickLogic = (function () {
     function subToggle(symbol) {
       symbolName = symbol;
       gameboard.arrayMoves.splice(index, 1, symbolName);
+      gameboard.display();
+      let gameResult = gameWinLogic.win();
+      if (gameResult === undefined) return;
+      if (gameResult === "draw") return (result.textContent = "It is a draw");
+      result.textContent = `${gameResult[0] === "x" ? "player 1 " : "player 2 "}wins the game`;
+    }
+    function randomIndex() {
+      return Math.floor(Math.random() * 8);
+    }
+
+    function playerVsCpu(symbol) {
+      symbolName = symbol;
+      let random = randomIndex();
+      while (gameboard.arrayMoves[random] !== "x") {
+        random = randomIndex();
+      }
+      gameboard.arrayMoves.splice(random, 1, symbolName);
       gameboard.display();
       let gameResult = gameWinLogic.win();
       if (gameResult === "draw") return (result.textContent = "It is a draw");
@@ -74,23 +91,13 @@ function player(name) {
   return { name };
 }
 
-function playerVsCpu(){
-let temp =  gameboard.arrayMoves;
-if(gameboard.arrayMoves!==temp){
-
-}
-}
-
-
+let options = document.querySelector('input[name="select"]:checked').value;
 function showBoard() {
-  let options = document.querySelector('input[name="select"]:checked').value;
-
   let gameContainer = document.querySelector("#gameContainer");
   gameContainer.style.display = "flex";
   landingPage.style.display = "none";
-  p1div.textContent = player1Name.value||"Player 1";
-  p2div.textContent = player2Name.value||"Player 2";
-  if(options === "pvc") return playerVsCpu();
+  p1div.textContent = player1Name.value || "Player 1";
+  p2div.textContent = player2Name.value || "Player 2";
 }
 let p1div = document.querySelector("#p1div");
 let p2div = document.querySelector("#p2div");
