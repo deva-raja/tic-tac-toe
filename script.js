@@ -23,23 +23,26 @@ let gameTickLogic = (function () {
     let index = el.dataset.index;
 
     function cpuPlay() {
-      let possibleMoves = gameboard.arrayMoves.filter((item, i) => {
-        if (item === "") {
-          return i;
-        }
-      });
-      console.log(possibleMoves);
-      return;
+      let pam = [];
+      for (let i = 0; gameboard.arrayMoves.length > i; i++) {
+        if (gameboard.arrayMoves[i] === "") pam.push(i);
+      }
+      let random = Math.floor(Math.random() * pam.length);
+      let randomChoice = pam[random];
+      console.log(randomChoice);
+      gameboard.arrayMoves.splice(randomChoice, 1, "0");
+      return gameboard.display();
     }
+
     function subToggle(symbol) {
       symbolName = symbol;
       gameboard.arrayMoves.splice(index, 1, symbolName);
       gameboard.display();
+      if (options === "pvc") cpuPlay();
       let gameResult = gameWinLogic.win();
       if (gameResult === undefined) return;
       if (gameResult === "draw") return (result.textContent = "It is a draw");
       result.textContent = `${gameResult[0] === "x" ? "player 1 " : "player 2 "}wins the game`;
-      if (options === "pvc") return cpuPlay();
     }
 
     if (this.parentNode.matches(".player1")) {
@@ -86,20 +89,22 @@ function player(name) {
   return { name };
 }
 
-let options = document.querySelector('input[name="select"]:checked').value;
-function showBoard() {
-  let gameContainer = document.querySelector("#gameContainer");
-  gameContainer.style.display = "flex";
-  landingPage.style.display = "none";
-  p1div.textContent = player1Name.value || "Player 1";
-  p2div.textContent = player2Name.value || "Player 2";
-}
+let landingPage = document.querySelector("#landingPage");
 let p1div = document.querySelector("#p1div");
 let p2div = document.querySelector("#p2div");
 let player1Name = document.querySelector("#p1name-select");
 let player2Name = document.querySelector("#p2name-select");
 
+let options;
+function showBoard() {
+  let optionsValue = document.querySelector('input[name="select"]:checked').value;
+  let gameContainer = document.querySelector("#gameContainer");
+  gameContainer.style.display = "flex";
+  landingPage.style.display = "none";
+  p1div.textContent = player1Name.value || "Player 1";
+  p2div.textContent = player2Name.value || "Player 2";
+  options = optionsValue;
+}
+
 let startButton = document.querySelector("#start");
 startButton.addEventListener("click", showBoard);
-
-let landingPage = document.querySelector("#landingPage");
