@@ -94,14 +94,14 @@ body {
 /* landing page end */
 
 /*radio label  */
-.radio-label{
+.radio-label {
   position: relative;
   cursor: pointer;
 }
-.radio-label input[type="radio"]{
-display: none;
+.radio-label input[type="radio"] {
+  display: none;
 }
-.radio-label span{
+.radio-label span {
   height: 23px;
   width: 23px;
   border-radius: 50%;
@@ -111,9 +111,8 @@ display: none;
   position: absolute;
   left: -38px;
   top: 24px;
-
 }
-.radio-label span:after{
+.radio-label span:after {
   content: "";
   height: 8px;
   width: 8px;
@@ -123,11 +122,40 @@ display: none;
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%,-50%) scale(0);
+  transform: translate(-50%, -50%) scale(0);
   border-radius: 50%;
   transition: 200ms ease-in;
 }
 
-.radio-label input[type="radio"]:checked ~ span:after{
-  transform: translate(-50%,-50%) scale(1);
+.radio-label input[type="radio"]:checked ~ span:after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* input text name */
+#p1Name,
+#p2Name {
+  position: relative;
+}
+.name {
+  position: absolute;
+  left: 25px;
+  top: 80px;
+  padding: 10px;
+  width: 250px;
+  border-radius: 3px;
+  outline: none;
+  border: none;
+}
+/* start game */
+#start {
+  outline: none;
+  border: none;
+  padding: 20px;
+  width: 220px;
+  border-radius: 50px;
+  background-color: rgb(12, 149, 190);
+  font-size: 22px;
+}
+#start:hover {
+  transform: scale(1.05);
 }
