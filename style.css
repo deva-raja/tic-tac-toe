@@ -5,23 +5,25 @@
 }
 body {
   background-color: rgb(236, 241, 235);
-  font-family: 'Cedarville Cursive', cursive;
+  font-family: "Cedarville Cursive", cursive;
   font-size: 38px;
 }
 
 /* actual game board start */
 
 .blocks {
-  border: 1px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 38px;
-  border: 1px solid black;
+  border: 1px solid rgb(238, 231, 231);
 }
 
 #container {
-  border: 1px solid black;
+  font-family: "Anton", sans-serif;
+  box-shadow: 12px 12px 12px rgb(104, 102, 102);
+  color: white;
+  background: black;
   margin: 150px auto;
   width: 500px;
   height: 500px;
@@ -49,7 +51,7 @@ body {
 
 /* landing page start  */
 #landingPage {
-  background:#6acba3;
+  background: #6acba3;
   margin: 0 auto;
   width: 100vw;
   height: 100vh;
@@ -90,3 +92,42 @@ body {
   grid-column: 3;
 }
 /* landing page end */
+
+/*radio label  */
+.radio-label{
+  position: relative;
+  cursor: pointer;
+}
+.radio-label input[type="radio"]{
+display: none;
+}
+.radio-label span{
+  height: 23px;
+  width: 23px;
+  border-radius: 50%;
+  border: 5px solid rgb(12, 149, 190);
+  display: block;
+  padding: 5px;
+  position: absolute;
+  left: -38px;
+  top: 24px;
+
+}
+.radio-label span:after{
+  content: "";
+  height: 8px;
+  width: 8px;
+  display: block;
+  background-color: rgb(12, 149, 190);
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%) scale(0);
+  border-radius: 50%;
+  transition: 200ms ease-in;
+}
+
+.radio-label input[type="radio"]:checked ~ span:after{
+  transform: translate(-50%,-50%) scale(1);
+}

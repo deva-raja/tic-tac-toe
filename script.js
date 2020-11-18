@@ -15,8 +15,6 @@ let gameboard = (function () {
 gameboard.display();
 
 function cpuPlay(symbol = "0") {
-  // let gameResult = gameWinLogic.win();
-  // if (gameResult === "win" || gameResult === "draw") return;
   let pam = [];
   for (let i = 0; gameboard.arrayMoves.length > i; i++) {
     if (gameboard.arrayMoves[i] === "") pam.push(i);

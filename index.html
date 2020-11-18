@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    
   </head>
   <body>
     <!-- when game begins -->
@@ -24,16 +27,25 @@
     <div id="landingPage">
       <div id="heading">Tic-Tac-Toe</div>
       <div id="pvp">
-        <input type="radio" id="pvpradio" name="select" value="pvp" />
-        <label for="pvpradio">Player Vs Player</label>
+        <label class="radio-label" for="pvpradio">
+          <input type="radio" id="pvpradio" name="select" value="pvp" />
+          <span></span>
+          Player Vs Player
+        </label>
       </div>
       <div id="pva">
-        <input type="radio" id="pvaradio" name="select" value="pvc" checked/>
-        <label for="pvaradio">Player Vs Cpu</label>
+        <label class="radio-label" for="pvaradio">
+          <input type="radio" id="pvaradio" name="select" value="pvc" checked/>
+          <span></span>
+          Player Vs Cpu
+        </label>
       </div>
       <div id="ava">
-        <input type="radio" id="avaradio" name="select" value="cvc" />
-        <label for="avaradio">Cpu Vs Cpu</label>
+        <label class="radio-label" for="avaradio">
+          <input type="radio" id="avaradio" name="select" value="cvc" />
+          <span></span>
+          Cpu Vs Cpu
+        </label>
       </div>
 
       <div id="p1Name">
